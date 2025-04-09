@@ -20,25 +20,24 @@ X_train_scaled = scaler.fit_transform(X_train)
 model = LogisticRegression()
 model.fit(X_train_scaled, y_train)
 
-st.title("🌸 Iris Flower Classification (Text-Box Table Style)")
-st.write("Fill in the input fields below, arranged like a table row.")
+st.title("🌸 Iris Flower Classifier")
+st.write("Fill in the inputs arranged like a table. Prediction will appear under **Class Label**.")
 
-# 👇 Create a horizontal layout to simulate a table row
-st.markdown("### Table Input")
+# Create column layout
 col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 1])
 
 with col1:
-    sepal_length = st.text_input("Sepal Length")
+    sepal_length = st.text_input("Sepal Length", key="sepal_length")
 with col2:
-    sepal_width = st.text_input("Sepal Width")
+    sepal_width = st.text_input("Sepal Width", key="sepal_width")
 with col3:
-    petal_length = st.text_input("Petal Length")
+    petal_length = st.text_input("Petal Length", key="petal_length")
 with col4:
-    petal_width = st.text_input("Petal Width")
+    petal_width = st.text_input("Petal Width", key="petal_width")
 with col5:
-    class_label = st.text_input("Class Label (Optional)")
+    class_label_placeholder = st.empty()  # Placeholder for displaying output
 
-# Predict button
+# Predict Button
 if st.button("Predict Species"):
     try:
         values = [float(sepal_length), float(sepal_width), float(petal_length), float(petal_width)]
@@ -47,15 +46,18 @@ if st.button("Predict Species"):
         prediction = model.predict(scaled_input)[0]
         predicted_species = target_names[prediction]
 
-        st.success(f"🌼 Predicted Species: **{predicted_species.capitalize()}**")
+        # Display in "Class Label" column
+        class_label_placeholder.markdown(f"### <span style='color:green'>{predicted_species.capitalize()}</span>", unsafe_allow_html=True)
+        st.success("Prediction complete!")
     except ValueError:
-        st.error("❌ Please enter valid numeric values in all fields.")
+        st.error("❌ Please enter valid numeric values.")
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
 
-# Optional: Model performance
+# Optional: Show model accuracy
 with st.expander("Model Performance"):
     y_pred = model.predict(scaler.transform(X_test))
-    st.write(f"Accuracy: **{accuracy_score(y_test, y_pred):.2f}**")
+    acc = accuracy_score(y_test, y_pred)
+    st.write(f"Accuracy: **{acc:.2f}**")
     st.text("Classification Report:")
     st.text(classification_report(y_test, y_pred, target_names=iris.target_names))
