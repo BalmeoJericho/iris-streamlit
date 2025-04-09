@@ -61,7 +61,7 @@ with st.expander("Model Performance on Test Set"):
     st.write(f"Accuracy: **{acc:.2f}**")
     st.text("Classification Report:")
     st.text(classification_report(y_test, y_pred, target_names=iris.target_names))
-=======
+
 import streamlit as st
 import pandas as pd
 from sklearn.datasets import load_iris
