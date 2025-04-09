@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+ HEAD
 import streamlit as st
 import pandas as pd
 from sklearn.datasets import load_iris
@@ -27,7 +27,7 @@ X_test_scaled = scaler.transform(X_test)
 model = LogisticRegression()
 model.fit(X_train_scaled, y_train)
 
-# Streamlit UI
+# Streamlit UI  
 st.set_page_config(page_title="Iris Flower Predictor", layout="centered")
 st.title("🌸 Iris Flower Classification")
 st.write("Enter the flower measurements to predict the species.")
@@ -125,4 +125,4 @@ with st.expander("Model Performance on Test Set"):
     st.write(f"Accuracy: **{acc:.2f}**")
     st.text("Classification Report:")
     st.text(classification_report(y_test, y_pred, target_names=iris.target_names))
->>>>>>> d79f128ec3e58172ac8b447c3775970892bca4ee
+ d79f128ec3e58172ac8b447c3775970892bca4ee
