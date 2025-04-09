@@ -21,7 +21,7 @@ model = LogisticRegression()
 model.fit(X_train_scaled, y_train)
 
 st.title("🌸 Iris Flower Classifier")
-st.write("Fill in the inputs arranged like a table. Prediction will appear under **Class Label**.")
+st.write("Jericho Neil S Balmeo")
 
 # Create column layout
 col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 1])
