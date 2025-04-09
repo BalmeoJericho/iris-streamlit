@@ -61,3 +61,4 @@ with st.expander("Model Performance"):
     st.write(f"Accuracy: **{acc:.2f}**")
     st.text("Classification Report:")
     st.text(classification_report(y_test, y_pred, target_names=iris.target_names))
+
