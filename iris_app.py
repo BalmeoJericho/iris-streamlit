@@ -22,6 +22,13 @@ model.fit(X_train_scaled, y_train)
 
 st.title("🌸 Iris Flower Classifier")
 st.write("Jericho Neil S Balmeo")
+st.write("Ivan Jasper Arnosa")
+st.write("Erick Esplana")
+st.write("Mark Steven Lopez")
+st.write("John Andrew Lagera")
+st.write("Denis Delas alas")
+
+
 
 # Create column layout
 col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 1])
